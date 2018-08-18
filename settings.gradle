@@ -1,0 +1,4 @@
+rootProject.name = 'JUnit'
+include 'JUnitHomework'
+findProject(':JUnitHomework')?.name = 'JUnit'
+
