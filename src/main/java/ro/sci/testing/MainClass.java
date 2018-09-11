@@ -8,6 +8,7 @@
  */
 package ro.sci;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import static ro.sci.testing.GetMaxNumber.getMax;
@@ -24,19 +25,23 @@ public class MainClass {
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("1. Please input three numbers to display the biggest: ");
-        int nr1 = scanner.nextInt();
-        int nr2 = scanner.nextInt();
-        int nr3 = scanner.nextInt();
+        try {
+            int nr1 = scanner.nextInt();
+            int nr2 = scanner.nextInt();
+            int nr3 = scanner.nextInt();
 
-        // call method getMax() to calculate the max number:
-        //   - between nr1 and nr2
-        int biggestNumber = getMax(nr1, nr2);
+            // call method getMax() to calculate the max number:
+            //   - between nr1 and nr2
+            int biggestNumber = getMax(nr1, nr2);
 
-        //   - between biggest number (from nr and nr 2) and nr3
-        biggestNumber = getMax(biggestNumber, nr3);
+            //   - between biggest number (from nr and nr 2) and nr3
+            biggestNumber = getMax(biggestNumber, nr3);
 
-        // print the result:
-        System.out.println("The biggest number is: " + biggestNumber);
+            // print the result:
+            System.out.println("The biggest number is: " + biggestNumber);
+        } catch (InputMismatchException e) {
+            throw new IllegalArgumentException("Please input an integer ");
+        }
 
 
         //  2. Fahrenheit to Celsius Conversion
@@ -48,17 +53,21 @@ public class MainClass {
         //        "You are ill!". ( use the method created before)
 
         System.out.println("2. Please input your body temperature in Fahrenheit degrees: ");
-        int fahrenheit = scanner.nextInt();
+        try {
+            int fahrenheit = scanner.nextInt();
 
-        // call the method temperature() to convert the degrees from F to C:
-        int celsius = temperature(fahrenheit);
+            // call the method temperature() to convert the degrees from F to C:
+            int celsius = temperature(fahrenheit);
 
-        // print the body temperature:
-        System.out.println("Your body temperature in Celsius degrees is " + celsius + ".");
+            // print the body temperature:
+            System.out.println("Your body temperature in Celsius degrees is " + celsius + ".");
 
-        // warn the user if body temperature is bigger than 37 Celsius degrees:
-        if (celsius > 37) {
-            System.out.println("Your are ill!");
+            // warn the user if body temperature is bigger than 37 Celsius degrees:
+            if (celsius > 37) {
+                System.out.println("Your are ill!");
+            }
+        } catch (InputMismatchException e) {
+            throw new IllegalArgumentException("Cannot convert to celsius degrees");
         }
 
 
@@ -72,11 +81,17 @@ public class MainClass {
 
         System.out.println("3. What time is it? ");
         System.out.println("hours: ");
-        int hh = scanner.nextInt();
-        System.out.println("minutes: ");
-        int mm = scanner.nextInt();
+        try {
+            int hh = scanner.nextInt();
+            System.out.println("minutes: ");
+            int mm = scanner.nextInt();
 
-        // call the method "time" and print the result:
-        System.out.println(time(hh, mm));
+            // call the method "time" and print the result:
+
+            System.out.println(time(hh, mm));
+        } catch (InputMismatchException e) {
+            throw new InputMismatchException("This is not a valid number!");
+        }
+
     }
 }

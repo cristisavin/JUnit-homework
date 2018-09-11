@@ -6,6 +6,7 @@
 
 package ro.sci.testing;
 
+
 public class TemperatureConversion {
     public static int temperature(int a) {
         // Fahrenheit to Celsius conversion formula:

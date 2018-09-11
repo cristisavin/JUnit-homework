@@ -6,7 +6,7 @@
 package ro.sci.testing;
 
 public class GetMaxNumber {
-    public static int getMax(int a, int b) {
+    public static int getMax(int a, int b){
         if (a > b) {
             return a;
         } else {
